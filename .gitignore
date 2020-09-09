@@ -1,0 +1,23 @@
+﻿################################################################################
+# Este archivo .gitignore ha sido creado automáticamente por Microsoft(R) Visual Studio.
+################################################################################
+*.suo
+*.user
+*.log
+.pubxml
+_ReSharper.*
+bin
+obj
+
+packages
+/.vs
+/XListener.Core.Services.Rest/App_Data/~$ConsultaSaldo1.xlsx
+/XListener.Core.Services.Rest/App_Data/ConsultaSaldo1.xlsx
+/XListener.Core.Services.Rest/App_Data/ConsultaSaldo.xlsx
+/XListener.Core.Services.Rest/App_Data/5FBC4A01-FFD4-46EA-A251-765D27989B3F/Nueva carpeta/ConsultaSaldo.xlsx
+/XListener.Core.Services.Rest/App_Data/ConsultaFactura.xlsx
+/XListener.Core.Services.Rest/ConsultaSaldo1.xlsx
+/XListener.Core.Services.Rest/ConsultaFactura.xlsx
+/XListener.Core.Services.Rest/App_Data/XListener/ConsultaFactura.xlsx
+/XListener.Core.Services.Rest/App_Data/XListener/Prueba.xlsx
+/XListener.Core.Services.Rest/App_Data/XListener
