@@ -1,11 +1,7 @@
 ﻿using DemoLuz.Core.Environment;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Configuration;
 
-namespace DemoLuz.Code.Configuration
+namespace DemoLuz.Code.Environment
 {
     public class ApplicationEnvironment : IApplicationEnvironment
     {

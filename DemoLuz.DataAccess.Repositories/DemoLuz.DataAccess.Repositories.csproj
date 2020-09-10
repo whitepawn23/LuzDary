@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{BD018BEC-346F-4911-9B49-0EDE1B1B14CD}</ProjectGuid>
+    <ProjectGuid>{43453998-C341-4F81-B4F8-A98B57626861}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DemoLuz.Core</RootNamespace>
-    <AssemblyName>DemoLuz.Core</AssemblyName>
+    <RootNamespace>DemoLuz.DataAccess.Repositories</RootNamespace>
+    <AssemblyName>DemoLuz.DataAccess.Repositories</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -32,7 +32,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -42,12 +41,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Common\CommandResult.cs" />
-    <Compile Include="Configuration\ApplicationConfigurator.cs" />
-    <Compile Include="Configuration\IApplicationEnvironment.cs" />
-    <Compile Include="Configuration\IConfigurator.cs" />
-    <Compile Include="IEnumerableExtensions.cs" />
+    <Compile Include="Companies\CompanyRepository.cs" />
+    <Compile Include="Employees\EmployeeRepository.cs" />
+    <Compile Include="Companies\ICompanyRepository.cs" />
+    <Compile Include="Employees\IEmployeeRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DemoLuz.DataAccess.Core\DemoLuz.DataAccess.Core.csproj">
+      <Project>{2DC4E059-E98B-4317-82ED-E6E0A899FFF3}</Project>
+      <Name>DemoLuz.DataAccess.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DemoLuz.DataAccess\DemoLuz.DataAccess.csproj">
+      <Project>{25762892-af4a-4d45-ad8f-392cb64de340}</Project>
+      <Name>DemoLuz.DataAccess</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
