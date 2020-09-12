@@ -185,6 +185,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Code\Environment\ApplicationEnvironment.cs" />
+    <Compile Include="Code\Logger\ConsoleLogger.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -300,6 +301,10 @@
     <ProjectReference Include="..\DemoLuz.DataAccess.Core\DemoLuz.DataAccess.Core.csproj">
       <Project>{2DC4E059-E98B-4317-82ED-E6E0A899FFF3}</Project>
       <Name>DemoLuz.DataAccess.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DemoLuz.DataAccess.Repositories\DemoLuz.DataAccess.Repositories.csproj">
+      <Project>{43453998-C341-4F81-B4F8-A98B57626861}</Project>
+      <Name>DemoLuz.DataAccess.Repositories</Name>
     </ProjectReference>
     <ProjectReference Include="..\DemoLuz.DataAccess\DemoLuz.DataAccess.csproj">
       <Project>{25762892-AF4A-4D45-AD8F-392CB64DE340}</Project>

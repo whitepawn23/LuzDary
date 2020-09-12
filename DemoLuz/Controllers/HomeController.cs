@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DemoLuz.Services.Companies;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,8 +9,16 @@ namespace DemoLuz.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly ICompanyService _companyService;
+        public HomeController(ICompanyService companyService)
+        {
+            _companyService = companyService;
+        }
         public ActionResult Index()
         {
+            var companiesResult = _companyService.Get();
+            if (companiesResult.Success) { 
+            }
             return View();
         }
 

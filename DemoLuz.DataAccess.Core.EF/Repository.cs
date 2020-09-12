@@ -137,6 +137,10 @@ namespace DemoLuz.DataAccess.Core.EF
         public void Update(IEnumerable<T> entities)
         {
             Repository<T> repository = this;
+            //foreach (var e in entities)
+            //{
+            //    repository.Add(e);
+            //}
             entities.ForEach(new Action<T>(repository.Add));
         }
     }

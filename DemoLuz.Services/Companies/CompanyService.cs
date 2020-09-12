@@ -5,15 +5,18 @@ using System.Collections.Generic;
 using DemoLuz.DataAccess.Model;
 using System.Linq;
 using DemoLuz.Core.Common;
+using DemoLuz.Core.Logger;
 
 namespace DemoLuz.Services.Companies
 {
     public class CompanyService : ICompanyService
     {
         private readonly ICompanyRepository _repository;
-        public CompanyService(ICompanyRepository repository)
+        private readonly ILogger _logger;
+        public CompanyService(ICompanyRepository repository, ILogger logger)
         {
             _repository = repository;
+            _logger = logger;
         }
         public CommandResult Create(string name)
         {
@@ -27,8 +30,9 @@ namespace DemoLuz.Services.Companies
             {
                 return new CommandResult { Success = false, Message = e.Message };
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                _logger.LogError(ex);
                 return new CommandResult { Success = false, Message = "Unknown error" };
             }
         }
@@ -47,8 +51,9 @@ namespace DemoLuz.Services.Companies
             {
                 return new CommandResult { Success = false, Message = e.Message };
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                _logger.LogError(ex);
                 return new CommandResult { Success = false, Message = "Unknown error" };
             }
         }
@@ -67,63 +72,93 @@ namespace DemoLuz.Services.Companies
             {
                 return new CommandResult { Success = false, Message = e.Message };
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                _logger.LogError(ex);
                 return new CommandResult { Success = false, Message = "Unknown error" };
             }
         }
         public CommandResult<CompanyModel> Find(Guid id)
         {
             var entity = _repository.Find(id);
-            if (entity == null)
+            try
+            {
+                if (entity == null)
+                    return new CommandResult<CompanyModel>
+                    {
+                        Result = null,
+                        Message = "Company not found",
+                        Success = true
+                    };
                 return new CommandResult<CompanyModel>
                 {
-                    Result = null,
-                    Message = "Company not found",
+                    Result = new CompanyModel { Id = entity.Id, Name = entity.Name },
                     Success = true
                 };
-            return new CommandResult<CompanyModel>
+            }
+            catch (Exception ex)
             {
-                Result = new CompanyModel { Id = entity.Id, Name = entity.Name },
-                Success = true
-            };
+                _logger.LogError(ex);
+                return new CommandResult<CompanyModel>
+                {
+                    Success = false,
+                    Message = "Unknown error"
+                };
+            }
         }
 
         public CommandResult<CompanyModel> Find(string name)
         {
-            var entity = _repository.Find(name);
-            if (entity == null)
+            try
+            {
+                var entity = _repository.Find(name);
+                if (entity == null)
+                    return new CommandResult<CompanyModel>
+                    {
+                        Result = null,
+                        Message = "Company not found",
+                        Success = true
+                    };
                 return new CommandResult<CompanyModel>
                 {
-                    Result = null,
-                    Message = "Company not found",
+                    Result = new CompanyModel { Id = entity.Id, Name = entity.Name },
                     Success = true
                 };
-            return new CommandResult<CompanyModel>
+            }
+            catch (Exception ex)
             {
-                Result = new CompanyModel { Id = entity.Id, Name = entity.Name },
-                Success = true
-            };
+                _logger.LogError(ex);
+                return new CommandResult<CompanyModel>
+                {
+                    Success = false,
+                    Message = "Unknown error"
+                };
+            }
         }
 
         public CommandResult<IEnumerable<CompanyModel>> Get()
         {
-            var entities = _repository.Get();
-            if (!entities.Any())
+            try
+            {
+                var entities = _repository.Get();
+                var result = new List<CompanyModel>();
+                foreach (var entity in entities)
+                    result.Add(new CompanyModel { Id = entity.Id, Name = entity.Name });
                 return new CommandResult<IEnumerable<CompanyModel>>
                 {
-                    Result = new List<CompanyModel>(),
-                    Message = "Company not found",
+                    Result = result,
                     Success = true
                 };
-            var result = new List<CompanyModel>();
-            foreach (var entity in entities)
-                result.Add(new CompanyModel { Id = entity.Id, Name = entity.Name });
-            return new CommandResult<IEnumerable<CompanyModel>>
+            }
+            catch (Exception ex)
             {
-                Result = result,
-                Success = true
-            };
+                _logger.LogError(ex);
+                return new CommandResult<IEnumerable<CompanyModel>>
+                {
+                    Success = false,
+                    Message = "Unknown error"
+                };
+            }
         }
     }
 }

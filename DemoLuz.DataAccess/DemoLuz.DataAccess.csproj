@@ -57,6 +57,8 @@
     <Compile Include="LuzDbContext.cs" />
     <Compile Include="Model\Company.cs" />
     <Compile Include="Model\Employee.cs" />
+    <Compile Include="Model\Logger.cs" />
+    <Compile Include="Model\LogType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

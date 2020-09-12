@@ -15,12 +15,16 @@ namespace DemoLuz.DataAccess
 
         public DbSet<Company> Companies { get; set; }
         public DbSet<Employee> Employees { get; set; }
-        protected override void OnModelCreating(DbModelBuilder modelBuilder) {
+        public DbSet<Logger> Logger { get; set; }
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
             modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
-            modelBuilder.Entity<Company>()
+            modelBuilder.Entity<Company>().ToTable("Companies")
               .HasMany(e => e.Employees)
               .WithRequired(e => e.Company)
               .HasForeignKey(e => e.CompanyId);
+            modelBuilder.Entity<Employee>().ToTable("Employees");
+            modelBuilder.Entity<Logger>().ToTable("Logger");
         }
     }
 }

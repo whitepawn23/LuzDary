@@ -47,6 +47,7 @@
     <Compile Include="Configuration\IApplicationEnvironment.cs" />
     <Compile Include="Configuration\IConfigurator.cs" />
     <Compile Include="IEnumerableExtensions.cs" />
+    <Compile Include="Logger\ILogger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

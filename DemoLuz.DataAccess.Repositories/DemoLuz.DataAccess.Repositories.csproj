@@ -45,9 +45,14 @@
     <Compile Include="Employees\EmployeeRepository.cs" />
     <Compile Include="Companies\ICompanyRepository.cs" />
     <Compile Include="Employees\IEmployeeRepository.cs" />
+    <Compile Include="LogManager\LoggerDbRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DemoLuz.Core\DemoLuz.Core.csproj">
+      <Project>{BD018BEC-346F-4911-9B49-0EDE1B1B14CD}</Project>
+      <Name>DemoLuz.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DemoLuz.DataAccess.Core\DemoLuz.DataAccess.Core.csproj">
       <Project>{2DC4E059-E98B-4317-82ED-E6E0A899FFF3}</Project>
       <Name>DemoLuz.DataAccess.Core</Name>
